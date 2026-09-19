@@ -2,22 +2,22 @@ spring:
   application:
     name: Booking-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/ticket_booking
+    url: jdbc:postgresql://localhost:5432/show_ticket_booking
     username: postgres
     password: adil2197
-    jpa:
-      hibernate:
+  jpa:
+    hibernate:
         # 'update' is convenient for local dev while entities are still settling.
         # Switch to 'validate' once you introduce Flyway/Liquibase migrations,
         # so schema changes are explicit rather than auto-applied.
-        ddl-auto: update
-      show-sql: true
-      properties:
-        hibernate:
-          format_sql: true
-    data:
-      redis:
-        host: localhost
-        port: 6379
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
 server:
   port: 8080

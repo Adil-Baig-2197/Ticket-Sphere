@@ -1,4 +1,5 @@
 package com.stb.bookingservice.dto.response;
 
-public class EventDetailResponse {
+public class EventResponse {
+
 }
