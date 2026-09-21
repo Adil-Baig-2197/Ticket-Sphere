@@ -1,7 +1,9 @@
 package com.stb.bookingservice.mapper;
 
+import com.stb.bookingservice.dto.response.EventResponse;
 import com.stb.bookingservice.dto.response.SeatMapResponse;
 import com.stb.bookingservice.dto.response.SeatResponse;
+import com.stb.bookingservice.entity.Event;
 import com.stb.bookingservice.entity.EventSeat;
 import com.stb.bookingservice.entity.enums.SeatStatus;
 
@@ -32,5 +34,14 @@ public class Mapper {
         return seatMapResponse;
     }
 
-
+    public EventResponse toEventResponse(Event event){
+        EventResponse eventResponse = new EventResponse();
+        eventResponse.setId(event.getId());
+        eventResponse.setName(event.getName());
+        eventResponse.setVenueName(event.getVenueName());
+        eventResponse.setStartTime(event.getStartTime());
+        eventResponse.setAvlSeats(event.getAvlSeats());
+        eventResponse.setTotalSeats(event.getTotalSeats());
+        return eventResponse;
+    }
 }

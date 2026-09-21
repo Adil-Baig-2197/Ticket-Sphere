@@ -1,5 +1,6 @@
 package com.stb.bookingservice.service;
 
+import com.stb.bookingservice.dto.response.EventResponse;
 import com.stb.bookingservice.dto.response.SeatMapResponse;
 import com.stb.bookingservice.entity.EventSeat;
 import com.stb.bookingservice.mapper.Mapper;
@@ -23,9 +24,14 @@ public class EventQueryServiceImpl implements EventQueryService{
         this.eventSeatRepository = eventSeatRepository;
     }
 
+    public EventResponse getEvent(UUID eventId){
+
+        return mapper.toEventResponse(eventRepository.findEventById(eventId));
+    }
+
     @Override
     public SeatMapResponse getSeatMap(UUID eventId, UUID viewerUserId){
-        eventRepository.findPublishedById(eventId);
+        //eventRepository.findPublishedById(eventId);
         //eventSeatRepository.findSeatMap(eventId, viewerUserId, clock.instant());
         List<EventSeat> seats = eventSeatRepository.findByEventId(eventId);
         return mapper.toSeatMapResponse(viewerUserId,eventId,seats);

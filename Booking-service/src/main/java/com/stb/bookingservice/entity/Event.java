@@ -29,10 +29,10 @@ public class Event {
 
     @Column(name = "start_time", nullable = false)
     private Instant startTime;
-//
-//    @Column(name = "totalSeats", nullable = false)
-//    private int totalSeats;
-//
-//    @Column(name = "avlSeats", nullable = false)
-//    private int avlSeats;
+
+    @Column(name = "total_Seats", nullable = false)
+    private int totalSeats;
+
+    @Column(name = "avl_Seats", nullable = false)
+    private int avlSeats;
 }
