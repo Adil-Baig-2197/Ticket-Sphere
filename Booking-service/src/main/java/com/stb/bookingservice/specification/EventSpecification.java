@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventSpecification {
-    public static Specification<Event> getSpecification(Instant time) {
+    public static Specification<Event> getEventSpecification(Instant time) {
         return new  Specification<Event>() {
             @Override
             public @Nullable Predicate toPredicate(Root<Event> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder){

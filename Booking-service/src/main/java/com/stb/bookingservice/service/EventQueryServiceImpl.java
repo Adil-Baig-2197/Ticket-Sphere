@@ -7,10 +7,12 @@ import com.stb.bookingservice.entity.EventSeat;
 import com.stb.bookingservice.mapper.Mapper;
 import com.stb.bookingservice.repository.EventRepository;
 import com.stb.bookingservice.repository.EventSeatRepository;
+import com.stb.bookingservice.specification.EventSpecification;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 //import java.time.Clock;
-import java.awt.print.Pageable;
+import org.springframework.data.domain.Pageable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +32,9 @@ public class EventQueryServiceImpl implements EventQueryService{
     }
 
     public List<EventResponse> getEventList(Instant time, Pageable pageable){
-        List<Event> eventList = eventRepository.findEventByStartTimeIsBeforeOrderByStartTime(time,pageable).getContent();
-        List<EventResponse> eventResponsesList = new ArrayList<>();
-        for(Event event:eventList){
-            eventResponsesList.add(mapper.toEventResponse(event));
-        }
-        return eventResponsesList;
+        Specification<Event> spec = EventSpecification.getEventSpecification(time);
+        List<Event> eventList = eventRepository.findAll(spec,pageable).getContent();
+        return eventList.stream().map(Mapper::toEventResponse).toList();
     }
 
     @Override

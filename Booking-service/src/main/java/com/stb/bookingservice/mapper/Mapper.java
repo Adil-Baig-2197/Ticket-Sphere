@@ -35,7 +35,7 @@ public class Mapper {
         return seatMapResponse;
     }
 
-    public EventResponse toEventResponse(Event event){
+    public static EventResponse toEventResponse(Event event){
         EventResponse eventResponse = new EventResponse();
         eventResponse.setId(event.getId());
         eventResponse.setName(event.getName());
