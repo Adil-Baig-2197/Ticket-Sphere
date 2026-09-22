@@ -2,6 +2,7 @@ package com.stb.bookingservice.service;
 
 import com.stb.bookingservice.dto.response.EventResponse;
 import com.stb.bookingservice.dto.response.SeatMapResponse;
+import com.stb.bookingservice.entity.Event;
 import com.stb.bookingservice.entity.EventSeat;
 import com.stb.bookingservice.mapper.Mapper;
 import com.stb.bookingservice.repository.EventRepository;
@@ -9,7 +10,9 @@ import com.stb.bookingservice.repository.EventSeatRepository;
 import org.springframework.stereotype.Service;
 
 //import java.time.Clock;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,9 +27,20 @@ public class EventQueryServiceImpl implements EventQueryService{
         this.eventSeatRepository = eventSeatRepository;
     }
 
-    public EventResponse getEvent(UUID eventId){
+//    public List<EventResponse> getEventList(UUID eventId){
+//        List<EventResponse> eventResponseList = new ArrayList<>();
+//        for(EventResponse eventResponse:)
+//        return eventResponseList;
+//    }
 
-        return mapper.toEventResponse(eventRepository.findEventById(eventId));
+    @Override
+    public EventResponse getEvent(UUID eventId){
+        Optional<Event> event = eventRepository.findEventById(eventId);
+        EventResponse eventResponse=null;
+        if(event.isPresent()) {
+            eventResponse = mapper.toEventResponse(event);
+        }
+        return eventResponse;
     }
 
     @Override
