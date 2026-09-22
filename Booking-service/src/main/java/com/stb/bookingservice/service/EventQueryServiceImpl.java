@@ -10,6 +10,8 @@ import com.stb.bookingservice.repository.EventSeatRepository;
 import org.springframework.stereotype.Service;
 
 //import java.time.Clock;
+import java.awt.print.Pageable;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,11 +29,14 @@ public class EventQueryServiceImpl implements EventQueryService{
         this.eventSeatRepository = eventSeatRepository;
     }
 
-//    public List<EventResponse> getEventList(UUID eventId){
-//        List<EventResponse> eventResponseList = new ArrayList<>();
-//        for(EventResponse eventResponse:)
-//        return eventResponseList;
-//    }
+    public List<EventResponse> getEventList(Instant time, Pageable pageable){
+        List<Event> eventList = eventRepository.findEventByStartTimeIsBeforeOrderByStartTime(time,pageable).getContent();
+        List<EventResponse> eventResponsesList = new ArrayList<>();
+        for(Event event:eventList){
+            eventResponsesList.add(mapper.toEventResponse(event));
+        }
+        return eventResponsesList;
+    }
 
     @Override
     public EventResponse getEvent(UUID eventId){

@@ -35,16 +35,25 @@ public class Mapper {
         return seatMapResponse;
     }
 
+    public EventResponse toEventResponse(Event event){
+        EventResponse eventResponse = new EventResponse();
+        eventResponse.setId(event.getId());
+        eventResponse.setName(event.getName());
+        eventResponse.setVenueName(event.getVenueName());
+        eventResponse.setStartTime(event.getStartTime());
+        eventResponse.setAvlSeats(event.getAvlSeats());
+        eventResponse.setTotalSeats(event.getTotalSeats());
+        return eventResponse;
+    }
+
     public EventResponse toEventResponse(Optional<Event> event){
         EventResponse eventResponse = new EventResponse();
-        if(event.isPresent()){
-            eventResponse.setId(event.get().getId());
-            eventResponse.setName(event.get().getName());
-            eventResponse.setVenueName(event.get().getVenueName());
-            eventResponse.setStartTime(event.get().getStartTime());
-            eventResponse.setAvlSeats(event.get().getAvlSeats());
-            eventResponse.setTotalSeats(event.get().getTotalSeats());
-        }
+        eventResponse.setId(event.get().getId());
+        eventResponse.setName(event.get().getName());
+        eventResponse.setVenueName(event.get().getVenueName());
+        eventResponse.setStartTime(event.get().getStartTime());
+        eventResponse.setAvlSeats(event.get().getAvlSeats());
+        eventResponse.setTotalSeats(event.get().getTotalSeats());
         return eventResponse;
     }
 }
