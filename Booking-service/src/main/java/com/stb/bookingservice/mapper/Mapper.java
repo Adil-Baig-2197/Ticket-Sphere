@@ -6,12 +6,14 @@ import com.stb.bookingservice.dto.response.SeatResponse;
 import com.stb.bookingservice.entity.Event;
 import com.stb.bookingservice.entity.EventSeat;
 import com.stb.bookingservice.entity.enums.SeatStatus;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
+@Component
 public class Mapper {
 
     public SeatMapResponse toSeatMapResponse(UUID userId,UUID eventId,List<EventSeat> seats){
