@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Show-ticket-booking-app.iml" filepath="$PROJECT_DIR$/Show-ticket-booking-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Booking-service/frontend/frontend.iml" filepath="$PROJECT_DIR$/Booking-service/frontend/frontend.iml" />
     </modules>
   </component>
 </project>
