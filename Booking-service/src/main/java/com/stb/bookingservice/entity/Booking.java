@@ -46,10 +46,6 @@ public class Booking {
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
 
-    /** Mirrors the hold expiry of this booking's seats; used by the cleanup sweep. */
-    @Column(name = "expires_at")
-    private Instant expiresAt;
-
     @Column(name = "total_amount", precision = 10, scale = 2)
     private BigDecimal totalAmount;
 
