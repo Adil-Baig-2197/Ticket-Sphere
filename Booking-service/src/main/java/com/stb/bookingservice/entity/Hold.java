@@ -23,6 +23,9 @@ public class Hold {
     private UUID holdId;
 
     @Column(nullable = false)
+    private UUID bookingId;
+
+    @Column(nullable = false)
     private UUID eventId;
 
     @Column(nullable = false)
@@ -44,5 +47,5 @@ public class Hold {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private HoldStatus status;
+    private HoldStatus status = HoldStatus.ACTIVE;
 }

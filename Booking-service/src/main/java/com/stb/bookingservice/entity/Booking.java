@@ -1,6 +1,5 @@
 package com.stb.bookingservice.entity;
 
-import com.stb.bookingservice.entity.enums.BookingStatus;
 import com.stb.bookingservice.entity.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -38,10 +37,6 @@ public class Booking {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private BookingStatus status = BookingStatus.PENDING;
 
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
