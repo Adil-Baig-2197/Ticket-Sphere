@@ -30,6 +30,6 @@ public class HoldServiceImpl  implements HoldService {
         hold.setUserId(command.userId());
         hold.setCreatedAt(command.time());
         hold.setExpiresAt(command.time().plus(Duration.ofMinutes(10)));
-        
+        return  new HoldCreatedResponse();
     }
 }
